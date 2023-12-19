@@ -1,0 +1,31 @@
+.registerBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 2rem;
+}
+.registerBox h2 {
+  margin-bottom: 10px;
+}
+
+.registerBox input {
+  width: 100%;
+  max-width: 400px;
+
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registerBox button {
+  padding: 10px 20px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 4px;
+  background-color: #488dfc;
+  color: white;
+  cursor: pointer;
+}

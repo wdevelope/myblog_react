@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  align-items: center;
+
+  background-color: #488dfc;
+  border-radius: 10px;
+  padding: 1.5rem;
+  color: white;
+}
+
+.navList a {
+  margin-right: 1.2rem;
+}

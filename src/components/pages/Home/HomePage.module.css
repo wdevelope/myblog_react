@@ -1,8 +1,11 @@
 .homeMain {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 
-  margin-top: 3rem;
+  padding: 3rem;
+}
+
+.homeMain svg {
+  margin-right: 10px;
+  color: navy;
 }

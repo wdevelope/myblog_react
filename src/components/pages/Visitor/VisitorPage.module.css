@@ -47,6 +47,14 @@
   background-color: #eaeaea;
 }
 
+.visitorTitle {
+  cursor: pointer;
+}
+
+.visitorTitle:hover {
+  font-weight: bold;
+}
+
 /* 첫 번째 열 */
 .visitorTable th:nth-child(1),
 .visitorTable td:nth-child(1) {

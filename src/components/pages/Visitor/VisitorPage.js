@@ -45,15 +45,19 @@ export default function VisitorPage() {
     navigate(`?page=${selectedPage}`);
   };
 
-  const handleWriteButtonClick = () => {
+  const goToWrite = () => {
     navigate('/visitor/write'); // 경로는 프로젝트의 라우트 설정에 따라 조정
+  };
+
+  const goToInfo = (id) => {
+    navigate(`/visitor/${id}`);
   };
 
   return (
     <div className={styles.visitorDiv}>
       <header className={styles.titleBox}>
         <h2>방명록</h2>
-        <button className={styles.writeButton} onClick={handleWriteButtonClick}>
+        <button className={styles.writeButton} onClick={goToWrite}>
           글쓰기
         </button>
       </header>
@@ -71,7 +75,9 @@ export default function VisitorPage() {
           {visitors.map((visitor) => (
             <tr key={visitor.id}>
               <td>{visitor.id}</td>
-              <td>{visitor.title}</td>
+              <td onClick={() => goToInfo(visitor.id)} className={styles.visitorTitle}>
+                {visitor.title}
+              </td>
               <td>{visitor.user.name}</td>
               <td>{new Date(visitor.createdAt).toLocaleDateString()}</td>
               <td>{visitor.views}</td>

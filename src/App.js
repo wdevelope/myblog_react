@@ -8,6 +8,7 @@ import LoginPage from './components/pages/Login/LoginPage';
 import RegisterPage from './components/pages/Register/RegisterPage';
 import VisitorPage from './components/pages/Visitor/VisitorPage';
 import VisitorWritePage from './components/pages/Visitor/VisitorWritePage';
+import VisitorInfoPage from './components/pages/Visitor/VisitorInfoPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Register" element={<RegisterPage />} />
           <Route path="/Visitor" element={<VisitorPage />} />
           <Route path="/Visitor/write" element={<VisitorWritePage />} />
+          <Route path="/Visitor/:id" element={<VisitorInfoPage />} />
         </Routes>
       </div>
     </Router>

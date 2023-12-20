@@ -1,0 +1,66 @@
+.visitorInfoBox {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.visitorInfoButtonBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #488dfc;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+button:hover {
+  background-color: #366fcf;
+}
+
+.visitorInfoTitle {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.visitorInfoBox p {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.visitorInfoBox p svg {
+  color: gray;
+}
+
+.visitorInfoContent {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.visitorInfoComment {
+  margin-top: 30px;
+}
+
+.visitorComment {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+}
+
+.visitorCommentt span {
+  font-weight: bold;
+}

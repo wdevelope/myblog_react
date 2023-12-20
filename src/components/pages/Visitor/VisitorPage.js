@@ -45,11 +45,17 @@ export default function VisitorPage() {
     navigate(`?page=${selectedPage}`);
   };
 
+  const handleWriteButtonClick = () => {
+    navigate('/visitor/write'); // 경로는 프로젝트의 라우트 설정에 따라 조정
+  };
+
   return (
     <div className={styles.visitorDiv}>
       <header className={styles.titleBox}>
         <h2>방명록</h2>
-        <button className={styles.writeButton}>글쓰기</button>
+        <button className={styles.writeButton} onClick={handleWriteButtonClick}>
+          글쓰기
+        </button>
       </header>
       <table className={styles.visitorTable}>
         <thead>

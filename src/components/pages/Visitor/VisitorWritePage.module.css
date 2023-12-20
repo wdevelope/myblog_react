@@ -1,0 +1,33 @@
+.visitorWriteForm {
+  display: flex;
+  flex-direction: column;
+  height: 760px;
+}
+
+.visitorWriteForm label {
+  margin-top: 10px;
+}
+
+.visitorWriteForm input,
+textarea {
+  padding: 8px;
+  border-radius: 3px;
+  border: 1px solid gainsboro;
+}
+
+.checkBox {
+  margin-right: auto;
+  margin-top: 10px;
+  margin-left: 3px;
+  transform: scale(1.2);
+}
+
+.visitorWriteForm button {
+  margin-top: 10px;
+  width: 100px;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #488dfc;
+  color: white;
+}

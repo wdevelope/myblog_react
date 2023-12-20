@@ -1,0 +1,40 @@
+.categoryList {
+  display: flex;
+  list-style-type: none;
+  margin-left: -10px;
+}
+
+.categoryItem {
+  position: relative; /* 서브 카테고리 위치 조정을 위해 */
+}
+
+.categoryName {
+  cursor: pointer;
+}
+
+.subCategoryList {
+  display: none; /* 기본적으로 숨김 */
+  position: absolute;
+
+  background-color: white;
+  color: black;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 5px;
+  left: 0;
+  width: auto; /* 너비를 자동으로 설정 */
+  white-space: nowrap; /* 모든 항목을 한 줄에 표시 */
+}
+
+.subCategoryList li {
+  border-bottom: 1px solid #ddd;
+}
+
+.subCategoryList li:last-child {
+  border-bottom: none; /* 마지막 항목의 밑줄 제거 */
+}
+
+.categoryItem:hover .subCategoryList {
+  display: block; /* 마우스 오버시 서브 카테고리 표시 */
+}

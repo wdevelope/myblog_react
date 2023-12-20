@@ -1,26 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaUsers } from 'react-icons/fa';
 import styles from './BasicNav.module.css';
+import DynamicNav from './DynaminNav';
 
 export default function BasicNav() {
   return (
     <div className={styles.nav}>
       <ul className={styles.navList}>
         <li>
-          <Link to="/home" className={styles.navItem}>
-            <div className={styles.icon}>
-              <FaHome />
-            </div>
-            <div>Home</div>
+          <Link to="/home">
+            <div>home</div>
           </Link>
         </li>
         <li>
-          <Link to="/visitor" className={styles.navItem}>
-            <div className={styles.icon}>
-              <FaUsers />
-            </div>
-            <div>Visitor</div>
+          <DynamicNav />
+        </li>
+        <li className={styles.navVisitor}>
+          <Link to="/visitor">
+            <div>visitor</div>
           </Link>
         </li>
       </ul>

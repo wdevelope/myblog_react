@@ -48,6 +48,8 @@ button:hover {
   background-color: #f9f9f9;
   border: 1px solid #eee;
   border-radius: 8px;
+  /* 띄어쓰기 적용 */
+  white-space: pre-wrap;
 }
 
 .visitorInfoComment {

@@ -1,17 +1,22 @@
 import ReactPaginate from 'react-paginate';
+import styles from './Pagination.module.css';
 
 const Pagination = ({ pageCount, onPageChange }) => {
   return (
     <ReactPaginate
-      previousLabel={"이전"}
-      nextLabel={"다음"}
-      breakLabel={"..."}
+      previousLabel={'<<'}
+      nextLabel={'>>'}
+      breakLabel={'...'}
       pageCount={pageCount}
       marginPagesDisplayed={2}
       pageRangeDisplayed={5}
       onPageChange={onPageChange}
-      containerClassName={"pagination"}
-      activeClassName={"active"}
+      containerClassName={styles.pagination}
+      pageLinkClassName={styles.pageLink}
+      activeLinkClassName={styles.active}
+      disabledLinkClassName={styles.disabledLink}
+      previousLinkClassName={styles.previousButton}
+      nextLinkClassName={styles.nextButton}
     />
   );
 };

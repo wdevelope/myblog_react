@@ -1,11 +1,28 @@
+.titleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+}
+
+.writeButton {
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(39, 39, 241);
+  color: white;
+  padding: 10px 10px;
+}
+.writeButton:hover {
+  background-color: #307af2;
+  cursor: pointer;
+}
+
 .visitorDiv {
   display: flex;
   align-items: center;
   justify-items: center;
   flex-direction: column;
-}
-.visitorDiv h2 {
-  margin-top: 30px;
 }
 
 .visitorTable {
@@ -23,7 +40,6 @@
 }
 
 .visitorTable th {
-  text-align: center;
   background-color: #f4f4f4;
 }
 

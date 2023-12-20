@@ -6,6 +6,7 @@ import BasicNav from './components/common/BasicNav';
 import HomePage from './components/pages/Home/HomePage';
 import LoginPage from './components/pages/Login/LoginPage';
 import RegisterPage from './components/pages/Register/RegisterPage';
+import VisitorPage from './components/pages/Visitor/VisitorPage';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<HomePage />} />
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Register" element={<RegisterPage />} />
+          <Route path="/Visitor" element={<VisitorPage />} />
         </Routes>
       </div>
     </Router>

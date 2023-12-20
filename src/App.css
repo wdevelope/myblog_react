@@ -6,13 +6,12 @@
 
 html,
 body {
-  width: 100%;
+  width: 90%;
+  height: 100%;
   max-width: 1200px;
 
   margin-right: auto;
   margin-left: auto;
-
-  overflow-x: hidden;
 }
 
 ul,

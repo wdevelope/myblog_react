@@ -1,0 +1,37 @@
+.pagination {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+
+  margin-top: 2rem;
+}
+
+.pageLink {
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #333;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.pageLink:hover {
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.disabledLink {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.previousButton,
+.nextButton {
+  margin: 0 3px;
+  cursor: pointer;
+}

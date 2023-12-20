@@ -3,13 +3,14 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 1.5rem 1.5rem;
+  padding: 1.5rem 0rem;
 }
 
 .header h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .LoginRegisterDiv a {
+  font-size: 1.1rem;
   margin: 0rem 0.5rem;
 }

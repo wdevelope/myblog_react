@@ -46,7 +46,7 @@ export default function VisitorPage() {
   };
 
   const goToWrite = () => {
-    navigate('/visitor/write'); // 경로는 프로젝트의 라우트 설정에 따라 조정
+    navigate('/visitor/write');
   };
 
   const goToInfo = (id) => {

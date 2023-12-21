@@ -9,6 +9,9 @@ import RegisterPage from './components/pages/Register/RegisterPage';
 import VisitorPage from './components/pages/Visitor/VisitorPage';
 import VisitorWritePage from './components/pages/Visitor/VisitorWritePage';
 import VisitorInfoPage from './components/pages/Visitor/VisitorInfoPage';
+import PostPage from './components/pages/Post/PostPage';
+import PostInfoPage from './components/pages/Post/PostInfoPage';
+import PostWritePage from './components/pages/Post/PostWritePage';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path="/Visitor" element={<VisitorPage />} />
           <Route path="/Visitor/write" element={<VisitorWritePage />} />
           <Route path="/Visitor/:id" element={<VisitorInfoPage />} />
+          <Route path="/:subCategoryName" element={<PostPage />} />
+          <Route path="/:subCategoryName/post/:postId" element={<PostInfoPage />} />
+          <Route path="/:subCategoryName/post/write" element={<PostWritePage />} />
         </Routes>
       </div>
     </Router>

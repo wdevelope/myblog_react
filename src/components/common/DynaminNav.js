@@ -46,7 +46,7 @@ export default function DynamicNav() {
             {subCategories[category.id] &&
               subCategories[category.id].map((subCategory) => (
                 <li key={subCategory.id}>
-                  <Link to={`/subCategory/${subCategory.id}`}>{subCategory.name}</Link>
+                  <Link to={`/${subCategory.name}`}>{subCategory.name}</Link>
                 </li>
               ))}
           </ul>

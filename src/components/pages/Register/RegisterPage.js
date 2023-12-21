@@ -1,11 +1,13 @@
 import styles from './RegisterPage.module.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +49,7 @@ export default function RegisterPage() {
 
       if (response.status === 201) {
         alert('회원가입에 성공했습니다.');
+        navigate(`/login`);
       } else {
         alert(`회원가입에 실패했습니다: ${data.errorMessage}`);
       }

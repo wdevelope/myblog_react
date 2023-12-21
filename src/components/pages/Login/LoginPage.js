@@ -1,9 +1,11 @@
 import styles from './LoginPage.module.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -38,6 +40,7 @@ export default function LoginPage() {
 
       if (response.status === 200) {
         alert('로그인에 성공했습니다.');
+        navigate(`/`);
       } else {
         alert(`로그인에 실패했습니다: ${data.errorMessage}`);
       }

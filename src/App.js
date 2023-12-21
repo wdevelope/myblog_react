@@ -12,6 +12,7 @@ import VisitorInfoPage from './components/pages/Visitor/VisitorInfoPage';
 import PostPage from './components/pages/Post/PostPage';
 import PostInfoPage from './components/pages/Post/PostInfoPage';
 import PostWritePage from './components/pages/Post/PostWritePage';
+import AccountPage from './components/pages/Account/AccountPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/home" element={<Navigate replace to="/" />} />
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Register" element={<RegisterPage />} />
+          <Route path="/account" element={<AccountPage />} />
           <Route path="/Visitor" element={<VisitorPage />} />
           <Route path="/Visitor/write" element={<VisitorWritePage />} />
           <Route path="/Visitor/:id" element={<VisitorInfoPage />} />

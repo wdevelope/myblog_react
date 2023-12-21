@@ -79,7 +79,7 @@ export default function PostPage() {
               <td onClick={() => goToPost(post.id)} className={styles.postTitle}>
                 {post.title}
               </td>
-              <td>{post.author}</td>
+              <td>{post.user.name}</td>
               <td>{new Date(post.createdAt).toLocaleDateString()}</td>
               <td>{post.views}</td>
             </tr>

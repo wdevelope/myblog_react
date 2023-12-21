@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import styles from './PostPage.module.css';
 import Pagination from '../../common/Pagination';
+import { useUserContext } from '../../../store/UserContext';
 
 export default function PostPage() {
   const [posts, setPosts] = useState([]);
@@ -10,6 +11,8 @@ export default function PostPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const { subCategoryName } = useParams();
+  const { userInfo } = useUserContext();
+  const status = userInfo.status;
 
   useEffect(() => {
     const query = new URLSearchParams(location.search);
@@ -47,7 +50,11 @@ export default function PostPage() {
   };
 
   const goToWrite = () => {
-    navigate(`/${subCategoryName}/post/write`);
+    if (status === 'admin') {
+      navigate(`/${subCategoryName}/post/write`);
+    } else {
+      alert('게시판 글쓰기는 관리자만 가능합니다.');
+    }
   };
 
   const goToPost = (id) => {

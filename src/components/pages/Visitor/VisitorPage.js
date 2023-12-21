@@ -1,7 +1,6 @@
-'use client';
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useUserContext } from '../../../store/UserContext';
 import styles from './VisitorPage.module.css';
 import Pagination from '../../common/Pagination';
 
@@ -11,17 +10,19 @@ export default function VisitorPage() {
   const [totalPages, setTotalPages] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
+  const { userInfo } = useUserContext();
+  const status = userInfo.status;
 
   useEffect(() => {
+    // URL에서 페이지 번호 가져오기
     const query = new URLSearchParams(location.search);
     const pageFromURL = parseInt(query.get('page'), 10);
 
     if (pageFromURL && !isNaN(pageFromURL)) {
       setCurrentPage(pageFromURL);
     }
-  }, [location.search]);
 
-  useEffect(() => {
+    // 방명록 데이터 가져오기
     const fetchVisitors = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor?page=${currentPage}`);
@@ -37,7 +38,7 @@ export default function VisitorPage() {
     };
 
     fetchVisitors();
-  }, [currentPage]); // currentPage를 의존성 배열에 추가
+  }, [location.search, currentPage]);
 
   const handlePageClick = (event) => {
     const selectedPage = Number(event.selected) + 1;
@@ -46,7 +47,13 @@ export default function VisitorPage() {
   };
 
   const goToWrite = () => {
-    navigate('/visitor/write');
+    console.log('이거찍힘?');
+    console.log(status);
+    if (status === 'user') {
+      navigate('/visitor/write');
+    } else {
+      alert('방명록 쓰기는 로그인을 해주세요.');
+    }
   };
 
   const goToInfo = (id) => {

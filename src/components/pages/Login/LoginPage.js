@@ -1,8 +1,12 @@
-import styles from './LoginPage.module.css';
-import { useState } from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUserContext } from '../../../store/UserContext';
+import styles from './LoginPage.module.css';
 
 export default function LoginPage() {
+  const { updateUserInfo } = useUserContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -40,6 +44,7 @@ export default function LoginPage() {
 
       if (response.status === 200) {
         alert('로그인에 성공했습니다.');
+        await updateUserInfo();
         navigate(`/`);
       } else {
         alert(`로그인에 실패했습니다: ${data.errorMessage}`);

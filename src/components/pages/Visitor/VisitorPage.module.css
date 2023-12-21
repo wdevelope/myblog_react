@@ -55,6 +55,11 @@
   font-weight: bold;
 }
 
+.visitorTitle svg {
+  margin-right: 3px;
+  color: rgb(172, 107, 22);
+}
+
 /* 첫 번째 열 */
 .visitorTable th:nth-child(1),
 .visitorTable td:nth-child(1) {

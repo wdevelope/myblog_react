@@ -38,11 +38,22 @@ export default function PostInfoPage() {
   const deletePost = async () => {
     if (window.confirm('정말로 삭제하시겠습니까?')) {
       try {
-        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`, {
           method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
         });
-        alert('게시물이 삭제되었습니다.');
-        navigate(-1);
+
+        const data = await response.json();
+
+        if (response.status === 200) {
+          alert('게시물이 삭제되었습니다.');
+          navigate(-1);
+        } else {
+          alert(`삭제 실패: ${data.errorMessage}`);
+        }
       } catch (error) {
         console.error('게시물 삭제 서버 에러', error);
         alert('게시물 삭제에 실패했습니다.');
@@ -59,12 +70,11 @@ export default function PostInfoPage() {
         <button onClick={deletePost}>Delete</button>
       </div>
 
-      <h1 className={styles.postInfoTitle}>{post.title}</h1>
+      <h2 className={styles.postInfoTitle}>{post.title}</h2>
       <p>
         {post.user.name} | {post.createdAt}
       </p>
-      <div className={styles.postInfoContent}>{post.content}</div>
-
+      <div className={styles.postInfoContent} dangerouslySetInnerHTML={{ __html: post.content }} />
       <div className={styles.postInfoComment}>
         <h3>댓글</h3>
         {post.comments &&

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Styles from './VisitorWritePage.module.css';
-import TextareaAutosize from 'react-textarea-autosize';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function VisitorWritePage() {
   const [title, setTitle] = useState('');
@@ -47,10 +48,8 @@ export default function VisitorWritePage() {
         <h2>방명록 글쓰기</h2>
         <label>제목 </label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-
         <label>내용 </label>
-        <TextareaAutosize value={content} onChange={(e) => setContent(e.target.value)} minRows={10} />
-
+        <ReactQuill className={Styles.contentInput} value={content} onChange={setContent} />
         <label>비밀글 </label>
         <input
           type="checkbox"
@@ -58,10 +57,8 @@ export default function VisitorWritePage() {
           checked={isPrivate}
           onChange={(e) => setIsPrivate(e.target.checked)}
         />
-
         <label>비밀번호</label>
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-
         <button type="submit">작성</button>
       </form>
     </div>

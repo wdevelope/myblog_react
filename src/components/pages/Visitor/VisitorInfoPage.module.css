@@ -1,8 +1,7 @@
 .visitorInfoBox {
-  margin: 20px;
+  margin: auto;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 8px;
 }
 
 .visitorInfoButtonBox {
@@ -31,7 +30,6 @@ button:hover {
 }
 
 .visitorInfoBox p {
-  font-size: 1.1rem;
   display: flex;
   align-items: center;
   padding: 5px;
@@ -45,8 +43,7 @@ button:hover {
 .visitorInfoContent {
   margin-top: 20px;
   padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #eee;
+  border: 1px solid #afafaf;
   border-radius: 8px;
   /* 띄어쓰기 적용 */
   white-space: pre-wrap;

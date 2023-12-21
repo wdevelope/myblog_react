@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useUserContext } from '../../../store/UserContext';
 import styles from './VisitorPage.module.css';
 import Pagination from '../../common/Pagination';
+import { FaLock } from 'react-icons/fa';
 
 export default function VisitorPage() {
   const [visitors, setVisitors] = useState([]);
@@ -47,8 +48,6 @@ export default function VisitorPage() {
   };
 
   const goToWrite = () => {
-    console.log('이거찍힘?');
-    console.log(status);
     if (status === 'user') {
       navigate('/visitor/write');
     } else {
@@ -56,8 +55,27 @@ export default function VisitorPage() {
     }
   };
 
-  const goToInfo = (id) => {
-    navigate(`/visitor/${id}`);
+  const goToInfo = async (visitor) => {
+    if (visitor.isPrivate) {
+      const password = prompt('비밀번호를 입력해주세요:');
+      if (!password) return;
+
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor/${visitor.id}/password`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password }),
+      });
+
+      if (response.ok) {
+        navigate(`/visitor/${visitor.id}`, { state: { password } });
+      } else {
+        alert('비밀번호가 틀렸습니다.');
+      }
+    } else {
+      navigate(`/visitor/${visitor.id}`);
+    }
   };
 
   return (
@@ -82,7 +100,8 @@ export default function VisitorPage() {
           {visitors.map((visitor) => (
             <tr key={visitor.id}>
               <td>{visitor.id}</td>
-              <td onClick={() => goToInfo(visitor.id)} className={styles.visitorTitle}>
+              <td onClick={() => goToInfo(visitor)} className={styles.visitorTitle}>
+                {visitor.isPrivate && <FaLock />}
                 {visitor.title}
               </td>
               <td>{visitor.user.name}</td>

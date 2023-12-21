@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Styles from './PostWritePage.module.css';
-import TextareaAutosize from 'react-textarea-autosize';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 export default function PostWritePage() {
   const [title, setTitle] = useState('');
@@ -47,7 +48,7 @@ export default function PostWritePage() {
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
 
         <label>내용 </label>
-        <TextareaAutosize value={content} onChange={(e) => setContent(e.target.value)} minRows={10} />
+        <ReactQuill className={Styles.contentInput} value={content} onChange={setContent} />
 
         <button type="submit">작성</button>
       </form>

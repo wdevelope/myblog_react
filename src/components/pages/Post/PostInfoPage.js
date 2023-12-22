@@ -9,7 +9,6 @@ export default function PostInfoPage() {
     content: '',
     user: { name: '' },
     createdAt: '',
-    comments: [], // 예시로 댓글 상태 추가
   });
   const { postId } = useParams();
   const navigate = useNavigate();
@@ -75,16 +74,6 @@ export default function PostInfoPage() {
         {post.user.name} | {post.createdAt}
       </p>
       <div className={styles.postInfoContent} dangerouslySetInnerHTML={{ __html: post.content }} />
-      <div className={styles.postInfoComment}>
-        <h3>댓글</h3>
-        {post.comments &&
-          post.comments.map((comment, index) => (
-            <div key={index} className={styles.postComment}>
-              <span>{comment.name}</span>
-              <p>{comment.comment}</p>
-            </div>
-          ))}
-      </div>
     </div>
   );
 }

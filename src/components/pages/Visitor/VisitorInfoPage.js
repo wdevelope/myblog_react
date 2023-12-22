@@ -74,13 +74,22 @@ export default function VisitorInfoPage() {
     }
   };
 
+  const putVisitor = () => {
+    alert('방명록 수정기능은 준비중입니다.');
+  };
+
   return (
     <div className={styles.visitorInfoBox}>
       <div className={styles.visitorInfoButtonBox}>
         <button onClick={goBack}>
           <FaArrowLeft />
         </button>
-        <button onClick={deleteVisitor}>Delete</button>
+        <div>
+          <button onClick={putVisitor}>Put</button>
+          <button className={styles.delButton} onClick={deleteVisitor}>
+            Del
+          </button>
+        </div>
       </div>
 
       <h2 className={styles.visitorInfoTitle}>{visitor.title}</h2>

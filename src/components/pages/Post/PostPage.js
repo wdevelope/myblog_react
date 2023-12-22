@@ -33,7 +33,12 @@ export default function PostPage() {
           throw new Error('Failed to fetch posts');
         }
         const data = await response.json();
-        setPosts(data.posts);
+        const totalCount = data.meta.totalCount; // 전체 게시글 수
+        const postData = data.posts.map((post, index) => ({
+          ...post,
+          index: totalCount - index - (currentPage - 1) * 15,
+        }));
+        setPosts(postData);
         setTotalPages(data.meta.totalPages);
       } catch (error) {
         console.error('Error fetching posts', error);
@@ -57,7 +62,11 @@ export default function PostPage() {
     }
   };
 
-  const goToPost = (id) => {
+  const goToPost = async (id) => {
+    await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/post/${id}`, {
+      method: 'POST',
+      credentials: 'include',
+    });
     navigate(`/${subCategoryName}/post/${id}`);
   };
 
@@ -82,7 +91,7 @@ export default function PostPage() {
         <tbody>
           {posts.map((post) => (
             <tr key={post.id}>
-              <td>{post.id}</td>
+              <td>{post.index}</td>
               <td onClick={() => goToPost(post.id)} className={styles.postTitle}>
                 {post.title}
               </td>

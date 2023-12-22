@@ -31,7 +31,12 @@ export default function VisitorPage() {
           throw new Error('Failed to fetch visitors');
         }
         const data = await response.json();
-        setVisitors(data.visitors);
+        const totalCount = data.meta.totalCount; // 전체 게시글 수
+        const visitorData = data.visitors.map((visitor, index) => ({
+          ...visitor,
+          index: totalCount - index - (currentPage - 1) * 15, // 게시글 번호 계산
+        }));
+        setVisitors(visitorData);
         setTotalPages(data.meta.totalPages);
       } catch (error) {
         console.log('오류 발생', error);
@@ -55,6 +60,7 @@ export default function VisitorPage() {
     }
   };
 
+  // 방명록 상세게시판 이동
   const goToInfo = async (visitor) => {
     if (visitor.isPrivate) {
       const password = prompt('비밀번호를 입력해주세요:');
@@ -69,11 +75,19 @@ export default function VisitorPage() {
       });
 
       if (response.ok) {
+        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/visitor/${visitor.id}`, {
+          method: 'POST',
+          credentials: 'include',
+        });
         navigate(`/visitor/${visitor.id}`, { state: { password } });
       } else {
         alert('비밀번호가 틀렸습니다.');
       }
     } else {
+      await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/visitor/${visitor.id}`, {
+        method: 'POST',
+        credentials: 'include',
+      });
       navigate(`/visitor/${visitor.id}`);
     }
   };
@@ -99,7 +113,7 @@ export default function VisitorPage() {
         <tbody>
           {visitors.map((visitor) => (
             <tr key={visitor.id}>
-              <td>{visitor.id}</td>
+              <td>{visitor.index}</td>
               <td onClick={() => goToInfo(visitor)} className={styles.visitorTitle}>
                 {visitor.isPrivate && <FaLock />}
                 {visitor.title}

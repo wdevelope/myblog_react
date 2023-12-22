@@ -32,7 +32,7 @@ export default function Home() {
       </h3>
       <ul>
         <li>
-          <strong>헬스 :</strong> 헬스 일기입니다.
+          <strong>헬스 :</strong> 헬스 일지입니다.
         </li>
       </ul>
       <br />
@@ -58,7 +58,7 @@ export default function Home() {
         <FaUser />
         Visitors
       </h3>
-      <span>자유로운 방명록 게시판입니다.</span>
+      <span>방명록 게시판입니다.</span>
     </main>
   );
 }

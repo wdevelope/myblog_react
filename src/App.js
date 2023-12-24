@@ -13,6 +13,7 @@ import VisitorInfoPage from './components/pages/Visitor/VisitorInfoPage';
 import PostPage from './components/pages/Post/PostPage';
 import PostInfoPage from './components/pages/Post/PostInfoPage';
 import PostWritePage from './components/pages/Post/PostWritePage';
+import PostEditPage from './components/pages/Post/PostEditPage';
 import AccountPage from './components/pages/Account/AccountPage';
 import AdminPage from './components/pages/Account/AdminPage';
 // redux
@@ -43,6 +44,7 @@ function App() {
               <Route path="/:subCategoryName" element={<PostPage />} />
               <Route path="/:subCategoryName/post/:postId" element={<PostInfoPage />} />
               <Route path="/:subCategoryName/post/write" element={<PostWritePage />} />
+              <Route path="/edit/:postId" element={<PostEditPage />} />
             </Routes>
           </main>
         </div>

@@ -1,7 +1,6 @@
 .visitorInfoBox {
   margin: auto;
   padding: 20px;
-  border: 1px solid #ddd;
 }
 
 .visitorInfoButtonBox {
@@ -33,7 +32,7 @@
 .visitorInfoContent {
   margin-top: 20px;
   padding: 15px;
-  border: 1px solid #afafaf;
+  border: 1px solid #ddd;
   border-radius: 8px;
   /* 띄어쓰기 적용 */
   white-space: pre-wrap;

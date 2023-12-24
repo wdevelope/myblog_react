@@ -23,22 +23,28 @@ function App() {
     <Router>
       <UserProvider>
         <div className="App">
-          <BasicHeader />
-          <BasicNav />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<Navigate replace to="/" />} />
-            <Route path="/Login" element={<LoginPage />} />
-            <Route path="/Register" element={<RegisterPage />} />
-            <Route path="/account" element={<AccountPage />} />
-            <Route path="/admin" element={<AdminPage />} />
-            <Route path="/Visitor" element={<VisitorPage />} />
-            <Route path="/Visitor/write" element={<VisitorWritePage />} />
-            <Route path="/Visitor/:id" element={<VisitorInfoPage />} />
-            <Route path="/:subCategoryName" element={<PostPage />} />
-            <Route path="/:subCategoryName/post/:postId" element={<PostInfoPage />} />
-            <Route path="/:subCategoryName/post/write" element={<PostWritePage />} />
-          </Routes>
+          <header>
+            <BasicHeader />
+          </header>
+          <nav>
+            <BasicNav />
+          </nav>
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/home" element={<Navigate replace to="/" />} />
+              <Route path="/Login" element={<LoginPage />} />
+              <Route path="/Register" element={<RegisterPage />} />
+              <Route path="/account" element={<AccountPage />} />
+              <Route path="/admin" element={<AdminPage />} />
+              <Route path="/Visitor" element={<VisitorPage />} />
+              <Route path="/Visitor/write" element={<VisitorWritePage />} />
+              <Route path="/Visitor/:id" element={<VisitorInfoPage />} />
+              <Route path="/:subCategoryName" element={<PostPage />} />
+              <Route path="/:subCategoryName/post/:postId" element={<PostInfoPage />} />
+              <Route path="/:subCategoryName/post/write" element={<PostWritePage />} />
+            </Routes>
+          </main>
         </div>
       </UserProvider>
     </Router>

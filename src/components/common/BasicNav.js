@@ -9,7 +9,7 @@ export default function BasicNav() {
       <ul className={styles.navList}>
         <li>
           <Link to="/home">
-            <div>home</div>
+            <div className={styles.homeLi}>home</div>
           </Link>
         </li>
         <li>

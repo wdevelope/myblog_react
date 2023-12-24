@@ -1,8 +1,7 @@
 .homeMain {
   display: flex;
   flex-direction: column;
-
-  padding: 3rem;
+  align-items: center;
 }
 
 .homeMain svg {

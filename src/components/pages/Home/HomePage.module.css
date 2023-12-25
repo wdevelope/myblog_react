@@ -1,7 +1,10 @@
 .homeMain {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
+  margin: 20px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .homeMain svg {

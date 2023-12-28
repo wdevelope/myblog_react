@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+## 🔥 개인 블로그 프로젝트 (Typescript 마이그레이션)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 개인 종합 블로그 프로젝트
+- express, javascript, typescript 함수형 서버구현
+- 3 layed 아키텍처 패턴 (controller, service, repository)
+- 기능에 문제 없는 선에서, 최대한 간결하게
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+## 🔥 ERD
 
-### `npm start`
+![ERD](https://ifh.cc/g/abA16w.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. users : 유저
+2. posts : 게시글
+3. categories : 게시글 카테고리
+4. subCategories : 카테고리 내 서브 카테고리
+5. images : 이미지 업로드
+6. visitors : 방명록
+7. visitorComments : 방명록 댓글
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+# 🔥 api 가이드 (/api)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### user (유저)
 
-### `npm run build`
+1. 회원가입 (POST) = api/user/register
+2. 로그인 (POST) = api/user/login
+3. 회원정보 (GET) = api/user/userInfo
+4. 유저상태 수정 (PUT) = api/user/status
+5. 로그아웃 (post) = api/user/logout
+6. 로그아웃 확인 (GET) = api/user/check
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### category (게시판 카테고리)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. 생성 (POST) = api/category
+2. 조회 (GET) = 전체 : api/category , 특정 : api/category/:id
+3. 수정 (PUT) = api/category/:id
+4. 삭제 (DELETE) = api/category/:id
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### subcategory (카테고리 내 서브카테고리)
 
-### `npm run eject`
+1. 생성 (POST) = api/subCategory
+2. 조회 (GET) = 전체 : /subCategory , 특정 : api/subCategory/:categoryId
+3. 수정 (PUT) = api/subCategory/:id
+4. 삭제 (DELETE) = api/subCategory/:id
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### post (게시글)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. 생성 (POST) = api/post
+2. 조회 (GET) = 전체 : /post , 특정 : api/post/:id
+3. 수정 (PUT) = api/post/:id
+4. 삭제 (DELETE) = api/post/:id
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### image (이미지)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. 업로드 (POST) = api/image
+2. 불러오기 (GET) = api/:id
 
-## Learn More
+### visitor (방명록)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br>
 
-### Code Splitting
+# 🔥 주요기능
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. 카테고리, 서브카테고리 생성
+2. 방명록 생성
 
-### Analyzing the Bundle Size
+# 🔥 기술적 의사결정
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. react
+2. 라이브러리
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 🔥 폴더 구조

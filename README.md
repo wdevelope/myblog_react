@@ -9,6 +9,10 @@
 
 ## 🔥 ERD
 
+<details>
+  <summary>ERD</summary>  
+  <br>
+
 ![ERD](https://ifh.cc/g/abA16w.png)
 
 1. users : 유저
@@ -18,6 +22,8 @@
 5. images : 이미지 업로드
 6. visitors : 방명록
 7. visitorComments : 방명록 댓글
+
+</details>
 
 <br>
 
@@ -60,18 +66,83 @@
 
 ### visitor (방명록)
 
+1. 생성 (POST) = api/visitor
+2. 조회 (GET) = 전체 : /post , 특정 : api/visitor/:id
+3. 수정 (PUT) = api/visitor/:id
+4. 삭제 (DELETE) = api/visitor/:id
+
 <br>
 
 <br>
 
 # 🔥 주요기능
 
-1. 카테고리, 서브카테고리 생성
-2. 방명록 생성
+<details>
+  <summary>게시글 작성</summary>
+   <br>
+  <img src="./src/static/photo/stock.png" width=100%>
+</details>
+<br>
+<details>
+  <summary>방명록 작성</summary>
+   <br>
+  <img src="./src/static/photo/community.png" width=100%>
+</details>
+<br>
+<details>
+  <summary>카테고리 생성</summary>
+    <br>
+  <img src="./src/static/photo/new.png" width=100%>
+</details>
+<br>
 
-# 🔥 기술적 의사결정
+## 👨‍⚖️ 기술적 의사결정
 
-1. react
-2. 라이브러리
+<details>
+  <summary><b>1. Redis DB 사용 (이메일 인증번호)</b></summary>
+  <div markdown="1">
+    </br>
+    <ul>
+      <li><b>도입 배경:</b></li>
+        <ul>
+          <li>회원가입 시 인증번호는 일시적으로만 필요한 정보입니다. 대부분의 사이트에서는 이러한 인증번호에 시간 제한을 두고, 그 시간이 지나면 인증번호는 무효화됩니다.</li>
+          <li>관계형 데이터베이스에 이러한 일시적이고 소멸성을 가진 데이터를 영구적으로 저장하는 것은 부적합하다고 생각하였습니다.</li>
+          <li>쿠키를 사용하는 방식도 고려했으나, 쿠키는 클라이언트 사이드에 저장되기 때문에 보안 상 취약하다고 판단하였습니다.</li>
+        </ul>
+      <li><b>결정:</b></li>
+        <ul>
+          <li>Redis는 데이터의 TTL(Time-To-Live) 설정이 간단하여, 인증번호의 유효 시간을 설정하기에 적합하다고 생각했습니다. 또한, 빠른 데이터 접근 속도를 제공하기 때문에 Redis, 즉 인메모리 데이터베이스를 선택하게 되었습니다.</li>
+        </ul>
+    </ul>
+  </div>
+</details>
+<br>
+<details>
+  <summary><b>2. 텍스트 에디터 사용</b></summary>
+  <div markdown="1">
+    </br>
+    <ul>
+      <li><b>도입 배경:</b></li>   
+  </div>
+</details>
+<br>
 
-# 🔥 폴더 구조
+## 🗂 프로젝트 구조
+
+  <summary><b>Back-End (node.js)</b></summary>
+  <br />
+  
+```html
+ ┃ 📂public          # 
+📦src
+ ┣ 📂components      # 컴포넌트                            
+  ┣ 📂common         # 공통 컴포넌트
+  ┣ 📂pages          # 페이지 컴포넌트
+ ┣ 📂store           # react 상태 관리
+  ┗ 📜UserContext.js # 회원 상태관리
+ ┗ 📜App.css         # 전역 css
+ ┗ 📜App.js          #    
+ ┗ 📜index.css       # 전역 css
+ ┗ 📜index.js        #   
+``` 
+<br>

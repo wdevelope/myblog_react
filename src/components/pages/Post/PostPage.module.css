@@ -16,8 +16,6 @@
   align-items: center;
   justify-items: center;
   flex-direction: column;
-
-  white-space: nowrap;
 }
 
 .postTable {

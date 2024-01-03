@@ -92,6 +92,11 @@ export default function VisitorPage() {
     }
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return new Date(dateString).toLocaleDateString('ko-KR', options).replace(/\./g, '').split(' ').join('. ');
+  };
+
   return (
     <div className={styles.visitorDiv}>
       <header className={styles.titleBox}>
@@ -119,7 +124,7 @@ export default function VisitorPage() {
                 {visitor.title}
               </td>
               <td>{visitor.user.name}</td>
-              <td>{new Date(visitor.createdAt).toLocaleDateString()}</td>
+              <td>{formatDate(visitor.createdAt)}</td>
               <td>{visitor.views}</td>
             </tr>
           ))}

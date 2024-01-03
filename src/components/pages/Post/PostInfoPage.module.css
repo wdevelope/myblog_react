@@ -48,3 +48,9 @@
 .postComment span {
   font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+  .postInfoBox {
+    padding: 0px;
+  }
+}

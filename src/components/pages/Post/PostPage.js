@@ -70,6 +70,11 @@ export default function PostPage() {
     navigate(`/${subCategoryName}/post/${id}`);
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return new Date(dateString).toLocaleDateString('ko-KR', options).replace(/\./g, '').split(' ').join('. ');
+  };
+
   return (
     <div className={styles.postDiv}>
       <header className={styles.titleBox}>
@@ -96,7 +101,7 @@ export default function PostPage() {
                 {post.title}
               </td>
               <td>{post.user.name}</td>
-              <td>{new Date(post.createdAt).toLocaleDateString()}</td>
+              <td>{formatDate(post.createdAt)}</td>
               <td>{post.views}</td>
             </tr>
           ))}

@@ -58,7 +58,7 @@ export default function VisitorWritePage() {
           onChange={(e) => setIsPrivate(e.target.checked)}
         />
         <label>비밀번호</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={!isPrivate} />
         <button type="submit">작성</button>
       </form>
     </div>

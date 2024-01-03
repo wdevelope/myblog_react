@@ -15,17 +15,13 @@ textarea {
   border: 1px solid gainsboro;
 }
 
-.postWriteForm button {
-  margin-top: 10px;
-  width: 100px;
-  border: none;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #488dfc;
-  color: white;
-}
-
 .contentInput {
   height: 400px;
   margin-bottom: 3.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .postWriteButton {
+    margin-top: 20px;
+  }
 }

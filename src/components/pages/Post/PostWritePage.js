@@ -50,7 +50,9 @@ export default function PostWritePage() {
         <label>내용 </label>
         <ReactQuill className={Styles.contentInput} value={content} onChange={setContent} />
 
-        <button type="submit">작성</button>
+        <button type="submit" className={Styles.postWriteButton}>
+          작성
+        </button>
       </form>
     </div>
   );

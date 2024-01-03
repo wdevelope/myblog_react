@@ -7,6 +7,10 @@
   margin-top: 10px;
 }
 
+.visitorWriteButton {
+  margin-top: 30px;
+}
+
 .visitorWriteForm input {
   padding: 8px;
   border-radius: 3px;
@@ -21,17 +25,13 @@
   transform: scale(1.2);
 }
 
-.visitorWriteForm button {
-  margin-top: 10px;
-  width: 100px;
-  border: none;
-  padding: 5px;
-  border-radius: 5px;
-  background-color: #488dfc;
-  color: white;
-}
-
 .contentInput {
   height: 400px;
   margin-bottom: 3rem;
+}
+
+@media screen and (max-width: 768px) {
+  .contentInput {
+    margin-bottom: 60px;
+  }
 }

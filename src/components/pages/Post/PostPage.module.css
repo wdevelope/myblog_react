@@ -6,14 +6,6 @@
   margin: 10px;
 }
 
-.writeButton {
-  border: none;
-  border-radius: 10px;
-  background-color: #488dfc;
-  color: white;
-  padding: 10px 10px;
-}
-
 .writeButton:hover {
   background-color: #307af2;
   cursor: pointer;

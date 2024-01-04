@@ -27,9 +27,10 @@
 
 .postInfoContent {
   margin-top: 20px;
-  padding: 15px;
+  padding: 1.2rem;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 3px;
+  font-size: 0.9rem;
   /* 띄어쓰기 적용 */
   white-space: pre-wrap;
 }

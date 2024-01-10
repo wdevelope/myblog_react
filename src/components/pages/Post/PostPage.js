@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import styles from './PostPage.module.css';
 import Pagination from '../../common/Pagination';
 import { useUserContext } from '../../../store/UserContext';
+import { FaLock } from 'react-icons/fa';
 
 export default function PostPage() {
   const [posts, setPosts] = useState([]);
@@ -33,6 +34,7 @@ export default function PostPage() {
           throw new Error('Failed to fetch posts');
         }
         const data = await response.json();
+
         const totalCount = data.meta.totalCount; // 전체 게시글 수
         const postData = data.posts.map((post, index) => ({
           ...post,
@@ -98,6 +100,7 @@ export default function PostPage() {
             <tr key={post.id}>
               <td>{post.index}</td>
               <td onClick={() => goToPost(post.id)} className={styles.postTitle}>
+                {post.accessLevel !== 0 && <FaLock />}
                 {post.title}
               </td>
               <td>{post.user.name}</td>

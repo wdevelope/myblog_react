@@ -47,6 +47,11 @@
   font-weight: bold;
 }
 
+.postTitle svg {
+  margin-right: 5px;
+  color: rgb(132, 132, 132);
+}
+
 /* 첫 번째 열 */
 .postTable th:nth-child(1),
 .postTable td:nth-child(1) {

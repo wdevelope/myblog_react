@@ -19,9 +19,10 @@ export default function PostInfoPage() {
   // 게시글 렌더링
   useEffect(() => {
     const fetchPostDetails = async () => {
-      console.log('fetchPostDetails 호출');
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`);
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`, {
+          credentials: 'include',
+        });
 
         if (response.status !== 200) {
           // 에러 응답 처리
@@ -41,7 +42,6 @@ export default function PostInfoPage() {
         console.error('Error fetching post detail', error);
       }
     };
-    console.log(postId);
     fetchPostDetails();
   }, [postId, navigate]);
 

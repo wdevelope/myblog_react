@@ -24,6 +24,7 @@ export default function PostPage() {
     }
   }, [location.search, subCategoryName]);
 
+  // 게시글 렌더링 + 페이지네이션
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -49,6 +50,11 @@ export default function PostPage() {
 
     fetchPosts();
   }, [currentPage, subCategoryName]); // currentPage와 subCategoryName을 의존성 배열에 추가
+
+  // 다른 게시판 이동시 페이지 초기화
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [subCategoryName]);
 
   const handlePageClick = (event) => {
     const selectedPage = Number(event.selected) + 1;
@@ -110,7 +116,7 @@ export default function PostPage() {
           ))}
         </tbody>
       </table>
-      <Pagination pageCount={totalPages} onPageChange={handlePageClick} />
+      <Pagination pageCount={totalPages} currentPage={currentPage} onPageChange={handlePageClick} />
     </div>
   );
 }

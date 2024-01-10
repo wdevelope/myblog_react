@@ -20,6 +20,13 @@ textarea {
   margin-bottom: 3.5rem;
 }
 
+.checkBox {
+  width: 20px; /* 너비 */
+  height: 20px; /* 높이 */
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
 @media screen and (max-width: 768px) {
   .postWriteButton {
     margin-top: 20px;

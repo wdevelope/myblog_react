@@ -7,6 +7,19 @@
   margin: 10px 0px;
 }
 
+.checkBox {
+  width: 20px; /* 너비 */
+  height: 20px; /* 높이 */
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: flex;
+}
+
 .postEditBox button {
+  margin-top: 10px;
+}
+
+.checkBoxLabel {
+  display: flex;
   margin-top: 10px;
 }

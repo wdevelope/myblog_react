@@ -7,8 +7,9 @@ import 'react-quill/dist/quill.snow.css';
 export default function PostWritePage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const navigate = useNavigate();
   const { subCategoryName } = useParams(); // URL에서 subCategoryName 추출
+  const [accessLevel, setAccessLevel] = useState(0);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,6 +24,7 @@ export default function PostWritePage() {
           title,
           content,
           subCategoryName,
+          accessLevel,
         }),
       });
 
@@ -49,7 +51,13 @@ export default function PostWritePage() {
 
         <label>내용 </label>
         <ReactQuill className={Styles.contentInput} value={content} onChange={setContent} />
-
+        <label>비밀글 </label>
+        <input
+          type="checkbox"
+          className={Styles.checkBox}
+          checked={accessLevel === 1}
+          onChange={(e) => setAccessLevel(e.target.checked ? 1 : 0)}
+        />
         <button type="submit" className={Styles.postWriteButton}>
           작성
         </button>

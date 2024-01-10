@@ -10,6 +10,7 @@ export default function PostEditPage() {
   const { postId } = useParams();
   const navigate = useNavigate();
   const quillRef = useRef(null);
+  const [accessLevel, setAccessLevel] = useState(0);
 
   const initialPost = location.state?.post || { title: '', content: '' };
   const [post, setPost] = useState(initialPost);
@@ -25,6 +26,7 @@ export default function PostEditPage() {
         body: JSON.stringify({
           title: post.title,
           content: post.content,
+          accessLevel,
         }),
       });
 
@@ -54,7 +56,13 @@ export default function PostEditPage() {
       </button>
       <input type="text" value={post.title} onChange={(e) => setPost({ ...post, title: e.target.value })} />
       <ReactQuill ref={quillRef} value={post.content} onChange={(content) => setPost({ ...post, content })} />
-
+      <label className={styles.checkBoxLabel}>비밀글 </label>
+      <input
+        type="checkbox"
+        className={styles.checkBox}
+        checked={accessLevel === 1}
+        onChange={(e) => setAccessLevel(e.target.checked ? 1 : 0)}
+      />
       <button onClick={handleEditSubmit}>Submit</button>
     </div>
   );

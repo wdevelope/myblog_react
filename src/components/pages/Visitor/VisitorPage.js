@@ -130,7 +130,7 @@ export default function VisitorPage() {
           ))}
         </tbody>
       </table>
-      <Pagination pageCount={totalPages} onPageChange={handlePageClick} />
+      <Pagination pageCount={totalPages} currentPage={currentPage} onPageChange={handlePageClick} />
     </div>
   );
 }

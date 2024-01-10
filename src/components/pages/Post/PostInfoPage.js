@@ -19,8 +19,19 @@ export default function PostInfoPage() {
   // 게시글 렌더링
   useEffect(() => {
     const fetchPostDetails = async () => {
+      console.log('fetchPostDetails 호출');
       try {
         const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`);
+
+        if (response.status !== 200) {
+          // 에러 응답 처리
+          const errorData = await response.json();
+          alert(errorData.errorMessage || '게시글 조회 권한이 없습니다.');
+          navigate(-1);
+          return;
+        }
+
+        // 정상 응답 처리
         const data = await response.json();
         setPost({
           ...data,
@@ -30,9 +41,9 @@ export default function PostInfoPage() {
         console.error('Error fetching post detail', error);
       }
     };
-
+    console.log(postId);
     fetchPostDetails();
-  }, [postId]);
+  }, [postId, navigate]);
 
   // 게시글 삭제
   const deletePost = async () => {

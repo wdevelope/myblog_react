@@ -23,7 +23,10 @@ export default function Home() {
           <strong>server:</strong> 서버 학습 정리 자료입니다.
         </li>
         <li>
-          <strong>ioT:</strong> 사물인터넷 학습 정리 자료입니다.
+          <strong>test:</strong> 테스트 코드 관련 자료입니다.
+        </li>
+        <li>
+          <strong>etc:</strong> 기타
         </li>
       </ul>
       <br />
@@ -32,7 +35,10 @@ export default function Home() {
       </h3>
       <ul>
         <li>
-          <strong>헬스 :</strong> 헬스 일지입니다.
+          <strong>운동 :</strong> 운동 일지입니다.
+        </li>
+        <li>
+          <strong>영화 :</strong> 영화 이야기 입니다.
         </li>
       </ul>
       <br />
@@ -42,7 +48,10 @@ export default function Home() {
       </h3>
       <ul>
         <li>
-          <strong>2023 :</strong> 소소한 일기입니다.
+          <strong>diary :</strong> 소소한 일기입니다.
+        </li>
+        <li>
+          <strong>job :</strong> 직업 관련 이야기입니다.
         </li>
       </ul>
       <br />

@@ -53,3 +53,13 @@
 .visitorCommentt span {
   font-weight: bold;
 }
+
+@media screen and (max-width: 768px) {
+  .visitorInfoBox {
+    padding: 0px;
+  }
+
+  .visitorInfoContent {
+    font-size: 0.7rem;
+  }
+}

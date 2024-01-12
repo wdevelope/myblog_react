@@ -1,5 +1,4 @@
 .postInfoBox {
-  margin: auto;
   padding: 20px;
 }
 
@@ -15,8 +14,6 @@
 }
 
 .postInfoBox p {
-  display: flex;
-  align-items: center;
   padding: 5px;
   margin-right: 10px;
 }
@@ -27,31 +24,18 @@
 
 .postInfoContent {
   margin-top: 20px;
-  padding: 1.2rem;
   border: 1px solid #ddd;
   border-radius: 3px;
-  font-size: 0.9rem;
   /* 띄어쓰기 적용 */
   white-space: pre-wrap;
 }
 
-.postInfoComment {
-  margin-top: 30px;
-}
-
-.postComment {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border-radius: 8px;
-}
-
-.postComment span {
-  font-weight: bold;
-}
-
 @media screen and (max-width: 768px) {
   .postInfoBox {
+    padding: 0px;
+  }
+
+  .postInfoBox p {
     padding: 0px;
   }
 

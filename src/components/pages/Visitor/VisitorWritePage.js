@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Styles from './VisitorWritePage.module.css';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import CustomReactQuill from '../../common/CustomReactQuill';
 
 export default function VisitorWritePage() {
   const [title, setTitle] = useState('');
@@ -49,7 +48,7 @@ export default function VisitorWritePage() {
         <label>제목 </label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
         <label>내용 </label>
-        <ReactQuill className={Styles.contentInput} value={content} onChange={setContent} />
+        <CustomReactQuill className={Styles.contentInput} value={content} onChange={setContent} />
         <label>비밀글 </label>
         <input
           type="checkbox"

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { FaArrowLeft, FaUser } from 'react-icons/fa';
 import styles from './VisitorInfoPage.module.css';
+import 'react-quill/dist/quill.snow.css';
 
 export default function VisitorInfoPage() {
   const [visitor, setVisitor] = useState({
@@ -98,7 +99,9 @@ export default function VisitorInfoPage() {
         <FaUser />
         &nbsp; &nbsp;| &nbsp;{visitor.createdAt}
       </p>
-      <div className={styles.visitorInfoContent} dangerouslySetInnerHTML={{ __html: visitor.content }} />
+      <div className={styles.visitorInfoContent}>
+        <div className="ql-editor" dangerouslySetInnerHTML={{ __html: visitor.content }} />
+      </div>
 
       <div className={styles.visitorInfoComment}>
         <h3>댓글</h3>

@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import CustomReactQuill from '../../common/CustomReactQuill';
 import styles from './PostEditPage.module.css';
 
 export default function PostEditPage() {
@@ -50,12 +49,16 @@ export default function PostEditPage() {
 
   return (
     <div className={styles.postEditBox}>
-      <h2>게시글 수정</h2>
       <button onClick={goBack}>
         <FaArrowLeft />
       </button>
-      <input type="text" value={post.title} onChange={(e) => setPost({ ...post, title: e.target.value })} />
-      <ReactQuill ref={quillRef} value={post.content} onChange={(content) => setPost({ ...post, content })} />
+      <input
+        type="text"
+        className={styles.editTitle}
+        value={post.title}
+        onChange={(e) => setPost({ ...post, title: e.target.value })}
+      />
+      <CustomReactQuill ref={quillRef} value={post.content} onChange={(content) => setPost({ ...post, content })} />
       <label className={styles.checkBoxLabel}>비밀글 </label>
       <input
         type="checkbox"

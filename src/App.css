@@ -72,3 +72,25 @@ a:hover {
     margin-right: 10px;
   }
 }
+
+/* Code Block 스타일 */
+pre {
+  background-color: #23241f;
+  color: #f8f8f2;
+  overflow: visible;
+  border-radius: 3px;
+  /* font-family: 'Courier New', Courier, monospace; */
+}
+
+blockquote {
+  border-left: 4px solid #ccc;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-left: 16px;
+
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}

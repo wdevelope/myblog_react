@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import styles from './PostInfoPage.module.css';
 import { useUserContext } from '../../../store/UserContext';
-import 'react-quill/dist/quill.snow.css';
+import CustomReactQuill from '../../common/CustomReactQuill';
 
 export default function PostInfoPage() {
   const [post, setPost] = useState({
@@ -103,7 +103,7 @@ export default function PostInfoPage() {
         {post.user.name} | {post.createdAt}
       </p>
       <div className={styles.postInfoContent}>
-        <div className="ql-editor" dangerouslySetInnerHTML={{ __html: post.content }} />
+        <CustomReactQuill value={post.content} readOnly={true} />
       </div>
     </div>
   );

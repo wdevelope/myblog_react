@@ -24,11 +24,6 @@
 
 .postInfoContent {
   margin-top: 20px;
-  padding: 7px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  /* 띄어쓰기 적용 */
-  white-space: pre-wrap;
 }
 
 @media screen and (max-width: 768px) {

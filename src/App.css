@@ -77,9 +77,8 @@ a:hover {
 pre {
   background-color: #23241f;
   color: #f8f8f2;
-  overflow: visible;
   border-radius: 3px;
-  /* font-family: 'Courier New', Courier, monospace; */
+  font-family: 'Consolas';
 }
 
 blockquote {

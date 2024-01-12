@@ -24,6 +24,7 @@
 
 .postInfoContent {
   margin-top: 20px;
+  padding: 7px;
   border: 1px solid #ddd;
   border-radius: 3px;
   /* 띄어쓰기 적용 */
@@ -41,5 +42,6 @@
 
   .postInfoContent {
     font-size: 0.7rem;
+    padding: 0px;
   }
 }

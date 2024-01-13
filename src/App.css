@@ -50,6 +50,18 @@ a:hover {
   color: #6495ed;
 }
 
+.ql-editor p {
+  font-size: 16px;
+}
+
+.ql-snow .ql-editor pre.ql-syntax {
+  background-color: #f7f7f7 !important ;
+  color: black !important; /* 변경된 텍스트 색상 */
+  overflow: visible;
+  border: 1px solid #e5e7eb !important;
+  padding: 1rem !important;
+}
+
 /* 모바일 */
 @media screen and (max-width: 768px) {
   html,
@@ -61,7 +73,7 @@ a:hover {
   }
 
   main {
-    font-size: 0.7rem;
+    font-size: 0.875rem;
   }
 
   button {
@@ -70,5 +82,9 @@ a:hover {
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
+  }
+
+  .ql-editor p {
+    font-size: 0.875rem;
   }
 }

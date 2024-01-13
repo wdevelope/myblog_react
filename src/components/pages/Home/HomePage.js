@@ -12,7 +12,7 @@ export default function Home() {
     // 최신 게시글 데이터를 가져오는 함수
     const fetchLatestPosts = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/post/latest');
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/latest`);
         if (!response.ok) {
           throw new Error('서버 오류가 발생했습니다.');
         }
@@ -26,7 +26,7 @@ export default function Home() {
     // 최신 방명록 데이터를 가져오는 함수
     const fetchLatestVisitors = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/visitor/latest');
+        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor/latest`);
         if (!response.ok) {
           throw new Error('서버 오류가 발생했습니다.');
         }

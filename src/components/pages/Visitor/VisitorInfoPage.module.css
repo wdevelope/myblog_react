@@ -49,7 +49,7 @@
   font-weight: bold;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .visitorInfoBox {
     padding: 0px;
   }

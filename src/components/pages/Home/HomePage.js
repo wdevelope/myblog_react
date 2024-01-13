@@ -51,6 +51,15 @@ export default function Home() {
     navigate('/visitor');
   };
 
+  // 날짜 형식
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    const formattedDate = new Date(dateString).toLocaleDateString('ko-KR', options);
+
+    // 마지막 '.' 제거
+    return formattedDate.replace(/\.$/, '');
+  };
+
   return (
     <main className={styles.homeContainer}>
       <section className={styles.homeMain}>
@@ -121,8 +130,9 @@ export default function Home() {
         </h3>
         <ul>
           {latestPosts.map((post) => (
-            <li key={post.id} onClick={() => handlePostClick(post.subCategory.name)}>
-              {post.title} - {new Date(post.createdAt).toLocaleDateString()}
+            <li key={post.id} onClick={() => handlePostClick(post.subCategory.name)} className={styles.postItem}>
+              <span className={styles.postTitle}>{post.title}</span>
+              <span className={styles.postDate}>{formatDate(post.createdAt)}</span>
             </li>
           ))}
         </ul>
@@ -134,8 +144,9 @@ export default function Home() {
         </h3>
         <ul>
           {latestVisitors.map((visitor) => (
-            <li key={visitor.id} onClick={handleVisitorClick}>
-              {visitor.title} - {new Date(visitor.createdAt).toLocaleDateString()}
+            <li key={visitor.id} onClick={handleVisitorClick} className={styles.visitorItem}>
+              <span className={styles.visitorTitle}>{visitor.title}</span>
+              <span className={styles.visitorDate}>{formatDate(visitor.createdAt)}</span>
             </li>
           ))}
         </ul>

@@ -27,7 +27,7 @@ textarea {
   margin-bottom: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .postWriteButton {
     margin-top: 20px;
   }

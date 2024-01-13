@@ -50,7 +50,7 @@ a:hover {
 }
 
 .ql-editor p {
-  font-size: 16px;
+  font-size: 0.83rem;
 }
 
 .ql-snow .ql-editor pre.ql-syntax {
@@ -62,7 +62,7 @@ a:hover {
 }
 
 /* 모바일 */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   html,
   body {
     width: 100%;

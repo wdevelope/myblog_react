@@ -30,7 +30,7 @@
   font-size: 16px;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .postInfoBox {
     padding: 0px;
   }

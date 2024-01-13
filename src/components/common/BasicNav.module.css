@@ -22,7 +22,7 @@
 }
 
 /* 모바일 */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .navList li {
     font-size: 0.7rem;
   }

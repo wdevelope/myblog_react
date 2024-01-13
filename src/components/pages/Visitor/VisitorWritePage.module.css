@@ -30,7 +30,7 @@
   margin-bottom: 3rem;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .contentInput {
     margin-bottom: 60px;
   }

@@ -54,3 +54,24 @@ p {
 .latestVisitors {
   margin-top: 3rem;
 }
+
+.postItem,
+.visitorItem {
+  display: flex;
+  justify-content: space-between;
+  /* 나머지 스타일링 */
+}
+
+.postTitle,
+.visitorTitle {
+  /* 제목 스타일링 */
+  white-space: nowrap; /* 줄바꿈 방지 */
+  overflow: hidden; /* 넘치는 내용 숨김 */
+  text-overflow: ellipsis; /* 말줄임표로 표시 */
+}
+
+@media (max-width: 600px) {
+  aside {
+    display: none;
+  }
+}

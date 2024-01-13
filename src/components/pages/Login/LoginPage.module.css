@@ -24,3 +24,9 @@
   padding: 10px 20px;
   margin-top: 5px;
 }
+
+@media (max-width: 768px) {
+  .loginBox input {
+    font-size: 0.7rem;
+  }
+}

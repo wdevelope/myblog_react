@@ -22,3 +22,13 @@
   border: 1px solid #ccc;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
+
+@media screen and (max-width: 768px) {
+  .searchSelect {
+    font-size: 0.7rem;
+  }
+
+  .searchInput {
+    font-size: 0.7rem;
+  }
+}

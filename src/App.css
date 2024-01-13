@@ -62,7 +62,7 @@ a:hover {
 }
 
 /* 모바일 */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   html,
   body {
     width: 100%;
@@ -72,7 +72,7 @@ a:hover {
   }
 
   main {
-    font-size: 0.875rem;
+    font-size: 0.7rem;
   }
 
   button {
@@ -81,9 +81,15 @@ a:hover {
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
+    font-size: 0.7rem;
   }
 
   .ql-editor p {
-    font-size: 0.875rem;
+    font-size: 0.7rem;
+  }
+
+  .ql-snow .ql-editor pre.ql-syntax {
+    font-size: 0.7rem;
+    padding: 0.6rem !important;
   }
 }

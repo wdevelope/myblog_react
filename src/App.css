@@ -33,7 +33,7 @@ a {
 }
 
 button {
-  background-color: #488dfc;
+  background-color: #212121;
   color: white;
   padding: 8px 13px;
   border: none;
@@ -41,9 +41,8 @@ button {
   cursor: pointer;
   margin-right: 10px;
 }
-
 button:hover {
-  background-color: #366fcf;
+  background-color: #525252;
 }
 
 a:hover {

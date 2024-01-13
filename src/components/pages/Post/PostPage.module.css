@@ -6,11 +6,6 @@
   margin: 10px;
 }
 
-.writeButton:hover {
-  background-color: #307af2;
-  cursor: pointer;
-}
-
 .postDiv {
   display: flex;
   align-items: center;

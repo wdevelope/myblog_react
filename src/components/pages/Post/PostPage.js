@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import styles from './PostPage.module.css';
 import Pagination from '../../common/Pagination';
 import { useUserContext } from '../../../store/UserContext';
+import SearchComponent from '../../common/SearchComponent';
 import { FaLock } from 'react-icons/fa';
 
 export default function PostPage() {
@@ -18,25 +19,30 @@ export default function PostPage() {
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const pageFromUrl = parseInt(query.get('page'), 10);
+    const keyword = query.get('keyword');
 
     if (pageFromUrl && !isNaN(pageFromUrl)) {
       setCurrentPage(pageFromUrl);
     }
-  }, [location.search, subCategoryName]);
 
-  // 게시글 렌더링 + 페이지네이션
-  useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(
-          `${process.env.REACT_APP_SERVER_URL}/api/post?page=${currentPage}&subCategoryName=${subCategoryName}`
-        );
+        let url = `${process.env.REACT_APP_SERVER_URL}/api/post?page=${currentPage}&subCategoryName=${subCategoryName}`;
+
+        if (keyword) {
+          url = `${process.env.REACT_APP_SERVER_URL}/api/post/search?page=${pageFromUrl}&keyword=${encodeURIComponent(
+            keyword
+          )}`;
+        }
+
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
+
         const data = await response.json();
 
-        const totalCount = data.meta.totalCount; // 전체 게시글 수
+        const totalCount = data.meta.totalCount;
         const postData = data.posts.map((post, index) => ({
           ...post,
           index: totalCount - index - (currentPage - 1) * 15,
@@ -49,19 +55,21 @@ export default function PostPage() {
     };
 
     fetchPosts();
-  }, [currentPage, subCategoryName]); // currentPage와 subCategoryName을 의존성 배열에 추가
+  }, [currentPage, subCategoryName, location.search]);
 
   // 다른 게시판 이동시 페이지 초기화
   useEffect(() => {
     setCurrentPage(1);
   }, [subCategoryName]);
 
+  // 페이지 네이션
   const handlePageClick = (event) => {
     const selectedPage = Number(event.selected) + 1;
     setCurrentPage(selectedPage);
     navigate(`?page=${selectedPage}`);
   };
 
+  // 글쓰기 페이지 이동
   const goToWrite = () => {
     if (status === 'admin') {
       navigate(`/${subCategoryName}/post/write`);
@@ -70,6 +78,7 @@ export default function PostPage() {
     }
   };
 
+  // 글 상세 페이지 이동
   const goToPost = async (id) => {
     await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/post/${id}`, {
       method: 'POST',
@@ -117,6 +126,9 @@ export default function PostPage() {
         </tbody>
       </table>
       <Pagination pageCount={totalPages} currentPage={currentPage} onPageChange={handlePageClick} />
+      <div>
+        <SearchComponent />
+      </div>
     </div>
   );
 }

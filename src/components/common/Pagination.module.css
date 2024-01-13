@@ -19,10 +19,13 @@
   cursor: pointer;
 }
 
+.pageLink a:hover {
+  color: #333;
+}
+
 .active {
-  background-color: #007bff;
+  background-color: #212121;
   color: #fff;
-  border-color: #007bff;
 }
 
 .disabledLink {

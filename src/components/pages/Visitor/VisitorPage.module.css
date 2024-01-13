@@ -48,6 +48,8 @@
 }
 
 .visitorTitle svg {
+  width: 0.675rem;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
   margin-right: 5px;
   color: rgb(132, 132, 132);
 }

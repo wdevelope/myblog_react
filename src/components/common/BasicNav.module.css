@@ -6,8 +6,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-
-  background-color: #3b4890;
+  background-color: #212121;
   border-radius: 5px;
   color: white;
 }

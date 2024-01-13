@@ -35,12 +35,11 @@
 }
 .homeAside li:hover {
   font-weight: bold;
-  color: #3b4890;
 }
 
 .homeMain svg {
   margin-right: 10px;
-  color: navy;
+  color: #212121;
 }
 
 .homeMain h3 {

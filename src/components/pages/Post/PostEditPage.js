@@ -9,10 +9,11 @@ export default function PostEditPage() {
   const { postId } = useParams();
   const navigate = useNavigate();
   const quillRef = useRef(null);
-  const [accessLevel, setAccessLevel] = useState(0);
 
-  const initialPost = location.state?.post || { title: '', content: '' };
-  const [post, setPost] = useState(initialPost);
+  const initialPost = location.state?.post || { title: '', content: '', accessLevel: 0 };
+
+  const [accessLevel, setAccessLevel] = useState(initialPost.accessLevel);
+  const [post, setPost] = useState({ title: initialPost.title, content: initialPost.content });
 
   const handleEditSubmit = async () => {
     try {

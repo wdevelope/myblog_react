@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useCallback } from 'react';
 
 const UserContext = createContext();
 
@@ -7,29 +7,32 @@ export const useUserContext = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({ name: '', email: '', status: '' });
 
-  const updateUserInfo = async () => {
-    const isLoggedIn = document.cookie.includes('Authorization');
-
-    if (!isLoggedIn) {
-      return;
-    }
-
+  const updateUserInfo = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/user/userinfo`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/user/check-auth`, {
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
       });
 
+      if (!response.ok) {
+        throw new Error('Failed to check auth status');
+      }
+
       const data = await response.json();
-      setUserInfo({ name: data.name, email: data.email, status: data.status });
+
+      if (data.isLoggedIn) {
+        setUserInfo(data.user);
+      } else {
+        setUserInfo({ name: '', email: '', status: '' });
+      }
     } catch (error) {
-      console.log('비로그인 상태');
+      setUserInfo({ name: '', email: '', status: '' });
     }
-  };
+  }, []);
 
   useEffect(() => {
     updateUserInfo();
-  }, []);
+  }, [updateUserInfo]);
 
   return <UserContext.Provider value={{ userInfo, updateUserInfo }}>{children}</UserContext.Provider>;
 };

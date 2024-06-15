@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserContext } from '../../../store/UserContext';
@@ -33,7 +31,7 @@ export default function LoginPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include',
+        credentials: 'include', // Ensure cookies are included in the request
         body: JSON.stringify({
           email,
           password,
@@ -51,7 +49,7 @@ export default function LoginPage() {
       }
     } catch (error) {
       console.error('로그인 중 오류 발생:', error);
-      alert('로그인중 오류가 발생했습니다.');
+      alert('로그인 중 오류가 발생했습니다.');
     }
   };
 

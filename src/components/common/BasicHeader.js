@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './BasicHeader.module.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useUserContext } from '../../store/UserContext';
 
 export default function BasicHeader() {
   const navigate = useNavigate();
-  const isLoggedin = document.cookie.includes('Authorization');
+  const { userInfo, updateUserInfo } = useUserContext();
 
-  const handleLogout = (e) => {
+  useEffect(() => {
+    updateUserInfo();
+  }, [updateUserInfo]);
+
+  const handleLogout = async (e) => {
     e.preventDefault();
-    // 쿠키에서 Authorization 제거
-    document.cookie = 'Authorization=; Max-Age=0';
-    alert('로그아웃에 성공했습니다.');
-    navigate('/home');
+    try {
+      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/logout`, {}, { withCredentials: true });
+      await updateUserInfo(); // 로그아웃 후 사용자 정보 업데이트
+      alert('로그아웃에 성공했습니다.');
+      navigate('/home');
+    } catch (error) {
+      console.error('로그아웃 실패:', error);
+      alert('로그아웃에 실패했습니다.');
+    }
   };
 
   return (
@@ -21,7 +32,7 @@ export default function BasicHeader() {
         <h2>w-life blog</h2>
       </Link>
       <div className={styles.LoginRegisterDiv}>
-        {isLoggedin ? (
+        {userInfo.userId ? (
           <>
             <Link to="#" onClick={handleLogout}>
               Logout

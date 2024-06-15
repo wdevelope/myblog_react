@@ -39,7 +39,7 @@ export default function VisitorPage() {
         setVisitors(visitorData);
         setTotalPages(data.meta.totalPages);
       } catch (error) {
-        console.log('오류 발생', error);
+        console.error('오류 발생', error);
       }
     };
 

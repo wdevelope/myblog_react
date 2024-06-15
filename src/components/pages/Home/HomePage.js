@@ -77,13 +77,10 @@ export default function Home() {
             <strong>web:</strong> 웹개발 학습 정리 자료입니다.
           </li>
           <li>
-            <strong>server:</strong> 서버 학습 정리 자료입니다.
+            <strong>algorithm:</strong> 알고리즘 학습 정리 자료입니다.
           </li>
           <li>
-            <strong>test:</strong> 테스트 코드 관련 자료입니다.
-          </li>
-          <li>
-            <strong>etc:</strong> 기타
+            <strong>etc:</strong> 기타 학습 정리 자료입니다.
           </li>
         </ul>
         <h3>
@@ -91,10 +88,13 @@ export default function Home() {
         </h3>
         <ul>
           <li>
-            <strong>운동 :</strong> 운동 일지입니다.
+            <strong>exercise :</strong> 운동 일지입니다.
           </li>
           <li>
-            <strong>영화 :</strong> 영화 이야기 입니다.
+            <strong>movie :</strong> 영화 이야기 입니다.
+          </li>
+          <li>
+            <strong>book :</strong> 책 이야기 입니다.
           </li>
         </ul>
         <h3>
@@ -118,7 +118,7 @@ export default function Home() {
         </ul>
         <h3>
           <FaUser />
-          Visitors
+          Visitor
         </h3>
         <span>방명록 게시판입니다.</span>
       </section>

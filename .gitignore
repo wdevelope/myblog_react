@@ -27,3 +27,5 @@ yarn-error.log*
 
 ## build
 config-overrides.js
+package-lock.json
+logs/

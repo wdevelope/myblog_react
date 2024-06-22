@@ -8,8 +8,8 @@ import { FaLock } from 'react-icons/fa';
 
 export default function PostPage() {
   const [posts, setPosts] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
   const location = useLocation();
   const { subCategoryName } = useParams();
@@ -19,15 +19,18 @@ export default function PostPage() {
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const pageFromUrl = parseInt(query.get('page'), 10);
-    const keyword = query.get('keyword');
-
     if (pageFromUrl && !isNaN(pageFromUrl)) {
       setCurrentPage(pageFromUrl);
     }
+  }, [location.search]);
 
+  useEffect(() => {
     const fetchPosts = async () => {
       try {
-        let url = `${process.env.REACT_APP_SERVER_URL}/api/post?page=${currentPage}&subCategoryName=${subCategoryName}`;
+        const query = new URLSearchParams(location.search);
+        const pageFromUrl = parseInt(query.get('page'), 10) || currentPage;
+        const keyword = query.get('keyword');
+        let url = `${process.env.REACT_APP_SERVER_URL}/api/post?page=${pageFromUrl}&subCategoryName=${subCategoryName}`;
 
         if (keyword) {
           url = `${process.env.REACT_APP_SERVER_URL}/api/post/search?page=${pageFromUrl}&keyword=${encodeURIComponent(
@@ -41,13 +44,12 @@ export default function PostPage() {
         }
 
         const data = await response.json();
-
-        const totalCount = data.meta.totalCount;
-        const postData = data.posts.map((post, index) => ({
-          ...post,
-          index: totalCount - index - (currentPage - 1) * 15,
-        }));
-        setPosts(postData);
+        setPosts(
+          data.posts.map((post, index) => ({
+            ...post,
+            index: data.meta.totalCount - index - (pageFromUrl - 1) * 15,
+          }))
+        );
         setTotalPages(data.meta.totalPages);
       } catch (error) {
         console.error('Error fetching posts', error);
@@ -57,19 +59,12 @@ export default function PostPage() {
     fetchPosts();
   }, [currentPage, subCategoryName, location.search]);
 
-  // 다른 게시판 이동시 페이지 초기화
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [subCategoryName]);
-
-  // 페이지 네이션
-  const handlePageClick = (event) => {
-    const selectedPage = Number(event.selected) + 1;
-    setCurrentPage(selectedPage);
-    navigate(`?page=${selectedPage}`);
+  const handlePageClick = (selectedPage) => {
+    const newPage = selectedPage.selected + 1;
+    setCurrentPage(newPage);
+    navigate(`?page=${newPage}`);
   };
 
-  // 글쓰기 페이지 이동
   const goToWrite = () => {
     if (status === 'admin') {
       navigate(`/${subCategoryName}/post/write`);
@@ -78,7 +73,6 @@ export default function PostPage() {
     }
   };
 
-  // 글 상세 페이지 이동
   const goToPost = async (id) => {
     await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/post/${id}`, {
       method: 'POST',

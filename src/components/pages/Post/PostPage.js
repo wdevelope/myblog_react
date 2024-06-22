@@ -89,12 +89,33 @@ export default function PostPage() {
   };
 
   // 글 상세 페이지로 이동
-  const goToPost = async (id) => {
-    await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/post/${id}`, {
-      method: 'POST',
-      credentials: 'include',
-    });
-    navigate(`/${subCategoryName}/post/${id}`);
+  const goToPost = async (postId) => {
+    const post = posts.find((p) => p.id === postId);
+    if (!post) {
+      alert('게시글을 찾을 수 없습니다.');
+      return;
+    }
+
+    if (post.accessLevel === 1 && userInfo.status !== 'admin') {
+      alert('비공개된 게시글입니다.');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/post/${postId}`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch post details');
+      }
+
+      navigate(`/${subCategoryName}/post/${postId}`);
+    } catch (error) {
+      console.error('Error navigating to post', error);
+      alert('게시글 상세 조회에 실패했습니다.');
+    }
   };
 
   const formatDate = (dateString) => {

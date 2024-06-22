@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import styles from './PostPage.module.css';
 import Pagination from '../../common/Pagination';
@@ -16,6 +16,9 @@ export default function PostPage() {
   const { userInfo } = useUserContext();
   const status = userInfo.status;
 
+  const previousPathname = useRef(location.pathname);
+
+  // 쿼리 파라미터로부터 페이지 번호를 가져오기
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const pageFromUrl = parseInt(query.get('page'), 10);
@@ -30,6 +33,7 @@ export default function PostPage() {
         const query = new URLSearchParams(location.search);
         const pageFromUrl = parseInt(query.get('page'), 10) || currentPage;
         const keyword = query.get('keyword');
+
         let url = `${process.env.REACT_APP_SERVER_URL}/api/post?page=${pageFromUrl}&subCategoryName=${subCategoryName}`;
 
         if (keyword) {
@@ -44,12 +48,13 @@ export default function PostPage() {
         }
 
         const data = await response.json();
-        setPosts(
-          data.posts.map((post, index) => ({
-            ...post,
-            index: data.meta.totalCount - index - (pageFromUrl - 1) * 15,
-          }))
-        );
+
+        const totalCount = data.meta.totalCount;
+        const postData = data.posts.map((post, index) => ({
+          ...post,
+          index: totalCount - (pageFromUrl - 1) * 15 - index,
+        }));
+        setPosts(postData);
         setTotalPages(data.meta.totalPages);
       } catch (error) {
         console.error('Error fetching posts', error);
@@ -59,12 +64,22 @@ export default function PostPage() {
     fetchPosts();
   }, [currentPage, subCategoryName, location.search]);
 
+  // 다른 게시판으로 이동 시 페이지 초기화
+  useEffect(() => {
+    if (previousPathname.current !== location.pathname) {
+      setCurrentPage(1);
+    }
+    previousPathname.current = location.pathname;
+  }, [location.pathname, subCategoryName]);
+
+  // 페이지 네이션
   const handlePageClick = (selectedPage) => {
-    const newPage = selectedPage.selected + 1;
+    const newPage = selectedPage.selected + 1; // event.selected는 0부터 시작하므로 1을 더해준다.
     setCurrentPage(newPage);
     navigate(`?page=${newPage}`);
   };
 
+  // 글쓰기 페이지로 이동
   const goToWrite = () => {
     if (status === 'admin') {
       navigate(`/${subCategoryName}/post/write`);
@@ -73,6 +88,7 @@ export default function PostPage() {
     }
   };
 
+  // 글 상세 페이지로 이동
   const goToPost = async (id) => {
     await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/post/${id}`, {
       method: 'POST',

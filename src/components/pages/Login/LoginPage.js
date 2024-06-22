@@ -58,7 +58,15 @@ export default function LoginPage() {
       <form onSubmit={onSubmit} className={styles.loginBox}>
         <h2>로그인</h2>
         <input type="email" name="email" placeholder="email" value={email} onChange={onChange} required />
-        <input type="password" name="password" placeholder="password" value={password} onChange={onChange} required />
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          autoComplete="current-password"
+          value={password}
+          onChange={onChange}
+          required
+        />
         <button type="submit">LOG IN</button>
       </form>
     </main>

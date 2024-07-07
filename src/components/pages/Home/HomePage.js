@@ -77,6 +77,9 @@ export default function Home() {
             <strong>web:</strong> 웹개발 학습 정리 자료입니다.
           </li>
           <li>
+            <strong>database:</strong> 데이터베이스 학습 정리 자료입니다.
+          </li>
+          <li>
             <strong>algorithm:</strong> 알고리즘 학습 정리 자료입니다.
           </li>
           <li>
@@ -107,6 +110,9 @@ export default function Home() {
           </li>
           <li>
             <strong>job :</strong> 직업 관련 이야기입니다.
+          </li>
+          <li>
+            <strong>todo :</strong> 해야할 것 정리입니다.
           </li>
         </ul>
         <h3>

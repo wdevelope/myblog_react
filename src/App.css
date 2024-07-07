@@ -51,6 +51,8 @@ a:hover {
 
 .ql-editor p {
   font-size: 0.83rem;
+  line-height: 1.2; /* 줄 간격을 조정 */
+  letter-spacing: -0.5px; /* 글자 간 간격을 조정 */
 }
 
 .ql-snow .ql-editor pre.ql-syntax {
@@ -86,6 +88,8 @@ a:hover {
 
   .ql-editor p {
     font-size: 0.7rem;
+    line-height: 1.5; /* 줄 간격을 조정 */
+    letter-spacing: -0.1px; /* 글자 간 간격을 조정 */
   }
 
   .ql-snow .ql-editor pre.ql-syntax {

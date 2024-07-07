@@ -8,6 +8,10 @@
   margin-bottom: 20px;
 }
 
+.postInfoButtonBox .delButton {
+  background-color: rgb(255, 63, 63);
+}
+
 .postInfoTitle {
   color: #333;
   margin-bottom: 15px;

@@ -86,7 +86,7 @@ export default function VisitorInfoPage() {
           <FaArrowLeft />
         </button>
         <div>
-          <button onClick={putVisitor}>Put</button>
+          <button onClick={putVisitor}>Edit</button>
           <button className={styles.delButton} onClick={deleteVisitor}>
             Del
           </button>

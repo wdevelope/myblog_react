@@ -1,10 +1,18 @@
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 * {
+  font-family: 'Pretendard-Regular', sans-serif;
+
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
 }
 
 html,
@@ -52,7 +60,6 @@ a:hover {
 .ql-editor p {
   font-size: 0.83rem;
   line-height: 1.2; /* 줄 간격을 조정 */
-  letter-spacing: -0.5px; /* 글자 간 간격을 조정 */
 }
 
 .ql-snow .ql-editor pre.ql-syntax {
@@ -89,7 +96,6 @@ a:hover {
   .ql-editor p {
     font-size: 0.7rem;
     line-height: 1.5; /* 줄 간격을 조정 */
-    letter-spacing: -0.1px; /* 글자 간 간격을 조정 */
   }
 
   .ql-snow .ql-editor pre.ql-syntax {

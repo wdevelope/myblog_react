@@ -92,7 +92,9 @@ export default function PostInfoPage() {
         {status === 'admin' && (
           <div>
             <button onClick={handleEditClick}>Edit</button>
-            <button onClick={deletePost}>Delete</button>
+            <button className={styles.delButton} onClick={deletePost}>
+              Del
+            </button>
           </div>
         )}
       </div>

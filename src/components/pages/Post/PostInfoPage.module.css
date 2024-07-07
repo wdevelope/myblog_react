@@ -1,5 +1,5 @@
 .postInfoBox {
-  padding: 20px;
+  padding: 10px;
 }
 
 .postInfoButtonBox {
@@ -19,7 +19,6 @@
 
 .postInfoBox p {
   padding: 5px;
-  margin-right: 10px;
 }
 
 .postInfoBox p svg {
@@ -27,11 +26,7 @@
 }
 
 .postInfoContent {
-  margin-top: 20px;
-}
-
-.ql-editor p {
-  font-size: 16px;
+  margin-top: 15px;
 }
 
 @media (max-width: 768px) {

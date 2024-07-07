@@ -59,7 +59,7 @@ a:hover {
 
 .ql-editor p {
   font-size: 0.83rem;
-  line-height: 1.2; /* 줄 간격을 조정 */
+  line-height: 1.4; /* 줄 간격을 조정 */
 }
 
 .ql-snow .ql-editor pre.ql-syntax {
@@ -67,7 +67,7 @@ a:hover {
   color: black !important; /* 변경된 텍스트 색상 */
   overflow: visible;
   border: 1px solid #e5e7eb !important;
-  padding: 1rem !important;
+  padding: 15px !important;
 }
 
 /* 모바일 */

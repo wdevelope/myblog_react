@@ -16,7 +16,7 @@ export default function BasicHeader() {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.REACT_APP_SERVER_URL}/api/user/logout`, {}, { withCredentials: true });
+      await axios.post(`/api/user/logout`, {}, { withCredentials: true });
       await updateUserInfo(); // 로그아웃 후 사용자 정보 업데이트
       alert('로그아웃에 성공했습니다.');
       navigate('/home');

@@ -32,7 +32,7 @@ export default function RegisterPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/user/register`, {
+      const response = await fetch(`/api/user/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

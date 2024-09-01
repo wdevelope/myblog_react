@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { FaArrowLeft, FaUser } from 'react-icons/fa';
 import styles from './VisitorInfoPage.module.css';
-import CustomReactQuill from './../../common/CustomReactQuill';
+import CustomReactQuill from '../../common/CustomReactQuill';
 
 export default function VisitorInfoPage() {
   const [visitor, setVisitor] = useState({
@@ -21,7 +21,7 @@ export default function VisitorInfoPage() {
     const fetchVisitorDetails = async () => {
       const visitorId = params.id;
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor/${visitorId}`, {
+        const response = await fetch(`/api/visitor/${visitorId}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export default function VisitorInfoPage() {
   const deleteVisitor = async () => {
     if (window.confirm('정말로 삭제하시겠습니까?')) {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor/${params.id}`, {
+        const response = await fetch(`/api/visitor/${params.id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

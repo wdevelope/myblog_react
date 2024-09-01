@@ -34,12 +34,10 @@ export default function PostPage() {
         const pageFromUrl = parseInt(query.get('page'), 10) || currentPage;
         const keyword = query.get('keyword');
 
-        let url = `${process.env.REACT_APP_SERVER_URL}/api/post?page=${pageFromUrl}&subCategoryName=${subCategoryName}`;
+        let url = `/api/post?page=${pageFromUrl}&subCategoryName=${subCategoryName}`;
 
         if (keyword) {
-          url = `${process.env.REACT_APP_SERVER_URL}/api/post/search?page=${pageFromUrl}&keyword=${encodeURIComponent(
-            keyword
-          )}`;
+          url = `/api/post/search?page=${pageFromUrl}&keyword=${encodeURIComponent(keyword)}`;
         }
 
         const response = await fetch(url);
@@ -102,7 +100,7 @@ export default function PostPage() {
     }
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/post/${postId}`, {
+      const response = await fetch(`/api/view/post/${postId}`, {
         method: 'POST',
         credentials: 'include',
       });

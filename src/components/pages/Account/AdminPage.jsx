@@ -16,7 +16,7 @@ export default function AdminPage() {
   const createCategory = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/category`, {
+      const response = await fetch(`/api/category`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -41,7 +41,7 @@ export default function AdminPage() {
   const createSubCategory = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/subCategory`, {
+      const response = await fetch(`/api/subCategory`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -63,7 +63,7 @@ export default function AdminPage() {
 
   const deleteCategory = async (categoryId) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/category/${categoryId}`, {
+      const response = await fetch(`/api/category/${categoryId}`, {
         method: 'DELETE',
         credentials: 'include',
       });

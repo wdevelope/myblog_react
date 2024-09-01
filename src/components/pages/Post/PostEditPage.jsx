@@ -17,7 +17,7 @@ export default function PostEditPage() {
 
   const handleEditSubmit = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`, {
+      const response = await fetch(`/api/post/${postId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

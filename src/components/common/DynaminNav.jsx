@@ -10,7 +10,7 @@ export default function DynamicNav() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/category`);
+        const response = await fetch(`/api/category`);
         const data = await response.json();
         const sortedCategories = data.sort((a, b) => a.position - b.position);
         setCategories(sortedCategories);
@@ -24,7 +24,7 @@ export default function DynamicNav() {
     const fetchSubCategories = async (categories) => {
       const newSubCategories = {};
       for (let category of categories) {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/subCategory/${category.id}`);
+        const response = await fetch(`/api/subCategory/${category.id}`);
         const data = await response.json();
         newSubCategories[category.id] = data.sort((a, b) => a.position - b.position);
       }

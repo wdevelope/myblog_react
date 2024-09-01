@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Styles from './VisitorWritePage.module.css';
+import { useParams, useNavigate } from 'react-router-dom';
+import Styles from './PostWritePage.module.css';
 import CustomReactQuill from '../../common/CustomReactQuill';
 
-export default function VisitorWritePage() {
+export default function PostWritePage() {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [password, setPassword] = useState('');
-  const [isPrivate, setIsPrivate] = useState(false);
+  const { subCategoryName } = useParams(); // URL에서 subCategoryName 추출
+  const [accessLevel, setAccessLevel] = useState(0);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor`, {
+      const response = await fetch(`/api/post`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,18 +22,18 @@ export default function VisitorWritePage() {
         body: JSON.stringify({
           title,
           content,
-          isPrivate,
-          password,
+          subCategoryName,
+          accessLevel,
         }),
       });
 
       const data = await response.json();
 
       if (response.status === 201) {
-        alert('방명록 작성에 성공했습니다.');
-        navigate('/visitor');
+        alert('게시글 작성에 성공했습니다.');
+        navigate(`/${subCategoryName}`);
       } else {
-        alert(`로그인에 실패했습니다: ${data.errorMessage}`);
+        alert(`작성 실패: ${data.errorMessage}`);
       }
     } catch (error) {
       alert('알 수 없는 에러가 발생했습니다.');
@@ -43,22 +43,21 @@ export default function VisitorWritePage() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className={Styles.visitorWriteForm}>
-        <h2>방명록 글쓰기</h2>
+      <form onSubmit={handleSubmit} className={Styles.postWriteForm}>
+        <h2>게시글 작성</h2>
         <label>제목 </label>
         <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+
         <label>내용 </label>
         <CustomReactQuill className={Styles.contentInput} value={content} onChange={setContent} />
         <label>비밀글 </label>
         <input
           type="checkbox"
           className={Styles.checkBox}
-          checked={isPrivate}
-          onChange={(e) => setIsPrivate(e.target.checked)}
+          checked={accessLevel === 1}
+          onChange={(e) => setAccessLevel(e.target.checked ? 1 : 0)}
         />
-        <label>비밀번호</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={!isPrivate} />
-        <button className={Styles.visitorWriteButton} type="submit">
+        <button type="submit" className={Styles.postWriteButton}>
           작성
         </button>
       </form>

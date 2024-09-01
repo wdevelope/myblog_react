@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
 
   const updateUserInfo = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/user/check-auth`, {
+      const response = await fetch(`/api/user/check-auth`, {
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
       });

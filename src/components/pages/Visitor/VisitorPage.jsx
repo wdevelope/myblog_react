@@ -26,7 +26,7 @@ export default function VisitorPage() {
     // 방명록 데이터 가져오기
     const fetchVisitors = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor?page=${currentPage}`);
+        const response = await fetch(`/api/visitor?page=${currentPage}`);
         if (!response.ok) {
           throw new Error('Failed to fetch visitors');
         }
@@ -66,7 +66,7 @@ export default function VisitorPage() {
       const password = prompt('비밀번호를 입력해주세요:');
       if (!password) return;
 
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/visitor/${visitor.id}/password`, {
+      const response = await fetch(`/api/visitor/${visitor.id}/password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ export default function VisitorPage() {
       });
 
       if (response.ok) {
-        await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/visitor/${visitor.id}`, {
+        await fetch(`/api/view/visitor/${visitor.id}`, {
           method: 'POST',
           credentials: 'include',
         });
@@ -84,7 +84,7 @@ export default function VisitorPage() {
         alert('비밀번호가 틀렸습니다.');
       }
     } else {
-      await fetch(`${process.env.REACT_APP_SERVER_URL}/api/view/visitor/${visitor.id}`, {
+      await fetch(`/api/view/visitor/${visitor.id}`, {
         method: 'POST',
         credentials: 'include',
       });

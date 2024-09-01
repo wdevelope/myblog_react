@@ -21,7 +21,7 @@ export default function PostInfoPage() {
   useEffect(() => {
     const fetchPostDetails = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`, {
+        const response = await fetch(`/api/post/${postId}`, {
           credentials: 'include',
         });
 
@@ -50,7 +50,7 @@ export default function PostInfoPage() {
   const deletePost = async () => {
     if (window.confirm('정말로 삭제하시겠습니까?')) {
       try {
-        const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/post/${postId}`, {
+        const response = await fetch(`/api/post/${postId}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

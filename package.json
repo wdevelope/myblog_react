@@ -1,6 +1,7 @@
 {
   "name": "myblog-react",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "homepage": "/",
   "dependencies": {
@@ -8,7 +9,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
-    "copy-webpack-plugin": "^12.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
@@ -20,10 +20,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start:dev": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start:dev": "vite --port 8080",
+    "build": "vite build",
+    "start:prod": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -44,7 +43,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "react-app-rewired": "^2.2.1"
+    "@vitejs/plugin-react": "^4.3.1",
+    "react-app-rewired": "^2.2.1",
+    "vite": "^5.4.2"
   }
 }

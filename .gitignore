@@ -29,4 +29,3 @@ yarn-error.log*
 config-overrides.js
 package-lock.json
 logs/
-dist/
